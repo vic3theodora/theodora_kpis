@@ -1,0 +1,105 @@
+{
+  "component-definition": {
+    "uuid": "7a598c29-f5dd-4e88-8239-83c945b352a2",
+    "metadata": {
+      "title": "Unauthorized Login Attempt Control",
+      "last-modified": "2025-04-01T14:00:00Z",
+      "version": "1.0",
+      "oscal-version": "1.0.4",
+      "roles": [
+        {
+          "id": "provider",
+          "title": "Provider"
+        },
+        {
+          "id": "implementer",
+          "title": "Implementer"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "52d14554-3dba-4f4a-a6c3-8a3f92f775ee",
+          "type": "organization",
+          "name": "Example Organization"
+        }
+      ]
+    },
+    "components": [
+      {
+        "uuid": "03e8d38a-2b7f-4e6b-8c99-e8c1c1d4f8a6",
+        "type": "policy",
+        "title": "Unauthorized Login Attempt Detection",
+        "description": "A control implementation for detecting and responding to unauthorized login attempts per NIST CSF PR.AC-7.",
+        "props": [
+          {
+            "name": "implementation-status",
+            "value": "implemented"
+          },
+          {
+            "name": "security-level",
+            "value": "high"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "9c8f8a8a-3fa5-4a76-bd58-e2cb7d4d2b9b",
+            "source": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.04162018.pdf",
+            "description": "Implementation of NIST Cybersecurity Framework control PR.AC-7",
+            "implemented-requirements": [
+              {
+                "uuid": "6c93175c-4e13-45bc-9fb9-ad72edbe0bec",
+                "control-id": "pr.ac-7",
+                "description": "Authentication and authorization processes to detect and respond to unauthorized login attempts",
+                "statements": [
+                  {
+                    "statement-id": "pr.ac-7_stmt.a",
+                    "uuid": "e2bc7a8a-3dba-4e8b-8c91-e8c1c1d4f8a6",
+                    "description": "Monitor failed login attempts and trigger alerts when thresholds are exceeded"
+                  },
+                  {
+                    "statement-id": "pr.ac-7_stmt.b",
+                    "uuid": "a1bc7a8a-3ccd-4e8b-8c91-e9a3c2d4f8a6",
+                    "description": "Implement account lockout after a defined number of consecutive failed attempts"
+                  },
+                  {
+                    "statement-id": "pr.ac-7_stmt.c",
+                    "uuid": "b3bc7a8a-3dba-4e8b-8c91-e8c1c1d4f8a6", 
+                    "description": "Log and report all unauthorized access attempts"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "id": "max-failed-attempts",
+            "label": "Maximum Failed Login Attempts",
+            "description": "The maximum number of consecutive failed login attempts before an account is locked",
+            "values": ["5"]
+          },
+          {
+            "id": "account-lockout-duration",
+            "label": "Account Lockout Duration",
+            "description": "The duration an account remains locked after exceeding maximum failed attempts (in minutes)",
+            "values": ["30"]
+          },
+          {
+            "id": "alert-threshold",
+            "label": "Alert Threshold",
+            "description": "The number of failed attempts that triggers a security alert",
+            "values": ["3"]
+          }
+        ],
+        "protocols": [
+          {
+            "uuid": "89bc7a8a-3dba-4e8b-8c91-e8c1c1d4f8a6",
+            "name": "Authentication Monitoring Protocol",
+            "title": "Failed Authentication Monitoring",
+            "description": "Protocol for monitoring authentication attempts and responding to potential unauthorized access"
+          }
+        ]
+      }
+    ]
+  }
+}
