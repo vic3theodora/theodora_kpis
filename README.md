@@ -1,2 +1,2 @@
-# theordora_kpis
+# theodora_kpis
 Theodora base code for demo
